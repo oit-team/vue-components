@@ -1,0 +1,85 @@
+$route-transition-property: transform;
+$route-transition-delay: .4s;
+$route-transition: $route-transition-property $route-transition-delay;
+$page-upper-index: 50;
+$page-lower-index: -1;
+$mask-bg: rgba(0, 0, 0, .3);
+
+@mixin mask {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: $route-transition;
+  z-index: 60;
+}
+
+// 路由过渡
+.push-route {
+  &-enter-active, &-leave-active {
+    position: absolute;
+
+    &:before {
+      //@include mask;
+    }
+  }
+
+  &-enter-active {
+    transition: $route-transition;
+  }
+
+  &-leave-active {
+    // 加一点延迟，减少在ios上会闪烁的情况
+    transition: $route-transition-property ($route-transition-delay + 0.2s);
+  }
+
+  &-enter {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  &-enter-active {
+    z-index: $page-upper-index;
+  }
+
+  &-leave-to {
+    transform: translate3d(-20%, 0, 0);
+
+    &:before {
+      background-color: $mask-bg;
+    }
+  }
+
+  &-leave-active {
+    z-index: $page-lower-index;
+  }
+}
+
+.pop-route {
+  &-enter-active, &-leave-active {
+    position: absolute !important;
+    transition: $route-transition;
+    will-change: transform;
+
+    &:before {
+      //@include mask;
+    }
+  }
+
+  &-leave-active, &-leave, &-leave-to {
+    z-index: $page-upper-index !important;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  &-enter {
+    z-index: $page-lower-index !important;
+    transform: translate3d(-20%, 0, 0);
+
+    &:before {
+      background-color: $mask-bg;
+    }
+  }
+
+  &-enter-to {
+    z-index: $page-lower-index !important;
+  }
+}
