@@ -1,6 +1,6 @@
 {
   "name": "@oit/vue-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "vue 公共组件库",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "index.js",
     "lib"
   ],
-  "author": "inlinger",
+  "author": "qiuxu <inlinger@outlook.com>",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.6",
