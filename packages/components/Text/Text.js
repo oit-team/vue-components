@@ -25,7 +25,7 @@ export default {
     price() {
       const price = Number(parseFloat(this.text).toFixed(2))
       const arr = price.toString().split('.')
-      arr[0] = arr[0].replace(/(\d)(?=(\d{3})+$)/ig, '$1,')
+      arr[0] = arr[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
       return arr.join('.')
     },
   },
