@@ -24,11 +24,24 @@ export default {
 
   computed: {
     active() {
+      let active
+
       if (this.ItemGroup?.multiple) {
-        return this.ItemGroup.innerValue.includes(this.itemValue)
+        active = this.ItemGroup.innerValue.includes(this.itemValue)
+      } else {
+        active = this.ItemGroup?.innerValue === this.itemValue
       }
 
-      return this.ItemGroup?.innerValue === this.itemValue
+      if (active && this.ItemGroup?.intoView) {
+        // eslint-disable-next-line vue/no-async-in-computed-properties
+        this.$nextTick(() => {
+          this.$el.scrollIntoView({
+            behavior: 'smooth',
+          })
+        })
+      }
+
+      return active
     },
     classes() {
       const activeClass = this.ItemGroup?.activeClass

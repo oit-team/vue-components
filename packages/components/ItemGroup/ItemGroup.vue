@@ -38,6 +38,8 @@ export default {
     mandatory: Boolean,
     // 允许多选
     multiple: Boolean,
+    // item改变时是否聚焦到视图可视区
+    intoView: Boolean,
   },
 
   data() {
