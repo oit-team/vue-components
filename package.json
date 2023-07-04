@@ -1,35 +1,33 @@
 {
   "name": "@oit/vue-components",
-  "version": "0.2.1",
+  "version": "1.0.0-beta.0",
   "description": "vue 公共组件库",
-  "main": "index.js",
-  "scripts": {
-    "lint": "eslint --fix --ext .vue --ext .js packages",
-    "dev": "babel packages --out-dir lib --source-maps --copy-files --no-copy-ignored",
-    "build": "rimraf lib && babel packages --out-dir lib --source-maps --copy-files --no-copy-ignored"
-  },
-  "files": [
-    "index.js",
-    "lib"
-  ],
-  "author": "qiuxu <inlinger@outlook.com>",
+  "author": "qiuxu <uxuip@outlook.com>",
   "license": "MIT",
+  "main": "dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "lint": "eslint . --fix",
+    "build": "vite build"
+  },
+  "peerDependencies": {
+    "vue": ">=2.6 <3"
+  },
   "devDependencies": {
-    "@babel/core": "^7.18.6",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.17.12",
-    "@babel/plugin-proposal-optional-chaining": "^7.17.12",
-    "@oit/eslint-config": "^1.1.1",
+    "@oit/eslint-config": "^0.4.7",
+    "@vitejs/plugin-vue2": "^2.2.0",
+    "@vitejs/plugin-vue2-jsx": "^1.1.0",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
     "@vue/babel-preset-jsx": "^1.2.4",
     "@vue/eslint-config-standard": "^7.0.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.18.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "2.25.2",
-    "eslint-plugin-n": "^15.2.3",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-vue": "^9.1.1",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "sass": "^1.63.6",
+    "vite": "^4.3.9",
+    "vue": "^2.7"
   },
   "publishConfig": {
     "registry": "http://192.168.9.16:4873"
