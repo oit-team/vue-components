@@ -18,7 +18,6 @@
   "devDependencies": {
     "@oit/eslint-config": "^0.4.7",
     "@vitejs/plugin-vue2": "^2.2.0",
-    "@vitejs/plugin-vue2-jsx": "^1.1.0",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
     "@vue/babel-preset-jsx": "^1.2.4",
     "@vue/eslint-config-standard": "^7.0.0",

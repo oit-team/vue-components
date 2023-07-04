@@ -1,7 +1,8 @@
+<script>
 import { getScroller } from '../../utils/scroll'
 import './LoadMore.scss'
 
-export const LOAD_STATUS = {
+const LOAD_STATUS = {
   INACTIVE: 0,
   LOADING: 1,
   DONE: 2,
@@ -120,23 +121,22 @@ export default {
       this.$once('hook:destroyed', observer.disconnect)
     },
   },
-
-  render(h) {
-    return (
-      <div class="vc-load-more">
-        <div class="vc-load-more__trigger">
-          <div
-            ref="trigger"
-            class="vc-load-more__trigger-core"
-            style={{ height: this.offset + 'px' }}
-          ></div>
-        </div>
-        <div class="vc-load-more__tips">
-          <div class={this.statusClass} class="vc-load-more__status" v-on:click={this.onClick}>
-            {this.$scopedSlots.default?.(this.scope) ?? slots.default?.(h, this.scope)}
-          </div>
-        </div>
-      </div>
-    )
-  },
 }
+</script>
+
+<template>
+  <div class="vc-load-more">
+    <div class="vc-load-more__trigger">
+      <div
+        ref="trigger"
+        class="vc-load-more__trigger-core"
+        :style="{ height: offset + 'px' }"
+      ></div>
+    </div>
+    <div class="vc-load-more__tips">
+      <div :class="statusClass" class="vc-load-more__status" @click="onClick">
+        <slot v-bind="scope"></slot>
+      </div>
+    </div>
+  </div>
+</template>

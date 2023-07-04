@@ -1,4 +1,4 @@
-import ItemGroup from './ItemGroup'
+import ItemGroup from './ItemGroup.vue'
 
 export { ItemGroup }
 

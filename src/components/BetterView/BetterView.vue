@@ -1,3 +1,4 @@
+<script>
 import './BetterView.scss'
 import VueRouter from 'vue-router'
 
@@ -90,20 +91,19 @@ export default {
       })
     },
   },
-
-  render(h) {
-    return (
-      <div class="vc-better-view">
-        <transition name={this.transitionName}>
-          <keep-alive
-            include={this.clearing ? [] : [...this.tabs, ...this.routeHistory, ...this.include]}
-            exclude={this.exclude}
-            max={this.max}
-          >
-            <router-view class="vc-router-view" />
-          </keep-alive>
-        </transition>
-      </div>
-    )
-  },
 }
+</script>
+
+<template>
+  <div class="vc-better-view">
+    <transition :name="transitionName">
+      <keep-alive
+        :include="clearing ? [] : [...tabs, ...routeHistory, ...include]"
+        :exclude="exclude"
+        :max="max"
+      >
+        <router-view class="vc-router-view" />
+      </keep-alive>
+    </transition>
+  </div>
+</template>

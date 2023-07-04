@@ -1,5 +1,4 @@
-import './Text.scss'
-
+<script>
 const MODE = {
   PRICE: 'price',
 }
@@ -21,6 +20,10 @@ export default {
     },
   },
 
+  data: () => ({
+    MODE,
+  }),
+
   computed: {
     price() {
       const price = Number(parseFloat(this.text).toFixed(2))
@@ -29,28 +32,12 @@ export default {
       return arr.join('.')
     },
   },
-
-  methods: {
-    genPrice(h) {
-      const { tag } = this
-
-      return (
-        <tag class="vc-text-price">
-          {this.textSymbol && <span class="vc-text-price__symbol">{this.textSymbol}</span>}
-          <span class="vc-text-price__content">{this.price}</span>
-        </tag>
-      )
-    },
-  },
-
-  render(h) {
-    if (this.text !== undefined) {
-      switch (this.mode) {
-        case MODE.PRICE:
-          return this.genPrice(h)
-      }
-    }
-
-    return undefined
-  },
 }
+</script>
+
+<template>
+  <component class="vc-text-price" :is="tag" v-if="mode === MODE.PRICE">
+    <span class="vc-text-price__symbol" v-if="textSymbol">{{ textSymbol }}</span>
+    <span class="vc-text-price__content">{{ price }}</span>
+  </component>
+</template>
