@@ -2,7 +2,7 @@ $route-transition-property: transform;
 $route-transition-delay: .4s;
 $route-transition: $route-transition-property $route-transition-delay;
 $page-upper-index: 50;
-$page-lower-index: -1;
+$page-lower-index: 0;
 $mask-bg: rgba(0, 0, 0, .3);
 
 @mixin mask {
