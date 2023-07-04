@@ -1,3 +1,17 @@
+<template>
+  <div class="vc-better-view">
+    <transition :name="transitionName">
+      <keep-alive
+        :include="clearing ? [] : [...tabs, ...routeHistory, ...include]"
+        :exclude="exclude"
+        :max="max"
+      >
+        <router-view class="vc-router-view" />
+      </keep-alive>
+    </transition>
+  </div>
+</template>
+
 <script>
 import './BetterView.scss'
 import VueRouter from 'vue-router'
@@ -28,8 +42,8 @@ export default {
 
   watch: {
     $route(to, from) {
-      const toName = to.matched?.[0]?.components?.default?.name ?? to.name
-      const fromName = from.matched?.[0]?.components?.default?.name ?? from.name
+      const toName = to.name ?? to.matched?.[0]?.components?.default?.name
+      const fromName = from.name ?? from.matched?.[0]?.components?.default?.name
       // 是否是前往主页
       const toHome = this.tabs.includes(toName)
       // 是否来自主页
@@ -93,17 +107,3 @@ export default {
   },
 }
 </script>
-
-<template>
-  <div class="vc-better-view">
-    <transition :name="transitionName">
-      <keep-alive
-        :include="clearing ? [] : [...tabs, ...routeHistory, ...include]"
-        :exclude="exclude"
-        :max="max"
-      >
-        <router-view class="vc-router-view" />
-      </keep-alive>
-    </transition>
-  </div>
-</template>
