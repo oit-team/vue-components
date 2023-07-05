@@ -43,10 +43,12 @@ export default {
         // 移除之后的记录
         this.routeHistory.splice(routeIndex + 1)
         isBack = true
-      } else if (!toHome) {
+      }
+      else if (!toHome) {
         // 添加记录
         this.routeHistory.push(toName)
-      } else {
+      }
+      else {
         // 清空记录
         this.routeHistory = []
       }
@@ -54,17 +56,17 @@ export default {
       // 如果是主页之间跳转、首个路由则无动画
       if ((toHome && fromHome) || from === VueRouter.START_LOCATION) {
         this.transitionName = ''
-      } else {
+      }
+      else {
         // 进入路由的动画
         const enterRouteTransition = to.meta.transition && to.meta.transition.enter
         // 退出路由的动画
         const leaveRouteTransition = from.meta.transition && from.meta.transition.leave
 
-        if (toHome) {
+        if (toHome)
           this.switchTransition(leaveRouteTransition, 'pop-route')
-        } else {
+        else
           this.switchTransition(enterRouteTransition, isBack ? 'pop-route' : 'push-route')
-        }
       }
     },
   },
@@ -72,12 +74,12 @@ export default {
   methods: {
     switchTransition(transition, defaultTransition) {
       if (transition !== undefined) {
-        if (typeof transition === 'boolean') {
+        if (typeof transition === 'boolean')
           this.transitionName = transition ? defaultTransition : ''
-        } else {
+        else
           this.transitionName = transition
-        }
-      } else {
+      }
+      else {
         this.transitionName = defaultTransition
       }
     },
@@ -96,14 +98,14 @@ export default {
 
 <template>
   <div class="vc-better-view">
-    <transition :name="transitionName">
-      <keep-alive
+    <Transition :name="transitionName">
+      <KeepAlive
         :include="clearing ? [] : [...tabs, ...routeHistory, ...include]"
         :exclude="exclude"
         :max="max"
       >
-        <router-view class="vc-router-view" />
-      </keep-alive>
-    </transition>
+        <RouterView class="vc-router-view" />
+      </KeepAlive>
+    </Transition>
   </div>
 </template>

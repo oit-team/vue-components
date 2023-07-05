@@ -9,9 +9,9 @@ export function getScroller(el, root = window) {
     && node !== root
   ) {
     const { overflowY } = window.getComputedStyle(node)
-    if (/scroll|auto|overlay/i.test(overflowY)) {
+    if (/scroll|auto|overlay/i.test(overflowY))
       return node
-    }
+
     node = node.parentNode
   }
 

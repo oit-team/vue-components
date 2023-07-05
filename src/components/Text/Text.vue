@@ -36,8 +36,8 @@ export default {
 </script>
 
 <template>
-  <component class="vc-text-price" :is="tag" v-if="mode === MODE.PRICE">
-    <span class="vc-text-price__symbol" v-if="textSymbol">{{ textSymbol }}</span>
+  <Component :is="tag" v-if="mode === MODE.PRICE" class="vc-text-price">
+    <span v-if="textSymbol" class="vc-text-price__symbol">{{ textSymbol }}</span>
     <span class="vc-text-price__content">{{ price }}</span>
-  </component>
+  </Component>
 </template>

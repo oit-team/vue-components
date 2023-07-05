@@ -26,11 +26,10 @@ export default {
     active() {
       let active
 
-      if (this.ItemGroup?.multiple) {
+      if (this.ItemGroup?.multiple)
         active = this.ItemGroup.innerValue.includes(this.itemValue)
-      } else {
+      else
         active = this.ItemGroup?.innerValue === this.itemValue
-      }
 
       if (active && this.ItemGroup?.intoView) {
         // eslint-disable-next-line vue/no-async-in-computed-properties
@@ -51,11 +50,12 @@ export default {
   },
 
   created() {
-    if (!this.ItemGroup) throw new TypeError('Item组件必须在ItemGroup组件下使用')
+    if (!this.ItemGroup)
+      throw new TypeError('Item组件必须在ItemGroup组件下使用')
     this.register()
   },
 
-  destroyed() {
+  unmounted() {
     this.ItemGroup.unregister(this)
   },
 
@@ -85,7 +85,8 @@ export default {
           active: this.active,
         }),
       )
-    } else {
+    }
+    else {
       render = this.$scopedSlots.default({
         active: this.active,
         toggle: this.onToggle,

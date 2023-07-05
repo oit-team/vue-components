@@ -1,9 +1,3 @@
-<template>
-  <component :is="tag">
-    <slot></slot>
-  </component>
-</template>
-
 <script>
 export default {
   name: 'VcItemGroup',
@@ -68,15 +62,16 @@ export default {
 
   methods: {
     initValue() {
-      if (!this.items.length) return
+      if (!this.items.length)
+        return
 
       const firstItemValue = this.items[0].itemValue
 
       if (this.multiple) {
-        if (!this.innerValue.length) {
+        if (!this.innerValue.length)
           this.innerValue.push(firstItemValue)
-        }
-      } else {
+      }
+      else {
         this.innerValue = this.innerValue ?? firstItemValue
       }
     },
@@ -84,19 +79,22 @@ export default {
       if (this.multiple) {
         if (item.active) {
           if (
-            this.innerValue.includes(item.itemValue) &&
-            (!this.mandatory || this.innerValue.length > 1)
-          ) {
+            this.innerValue.includes(item.itemValue)
+            && (!this.mandatory || this.innerValue.length > 1)
+          )
             this.innerValue.splice(this.innerValue.indexOf(item.itemValue), 1)
-          }
-        } else {
+        }
+        else {
           this.innerValue.push(item.itemValue)
         }
-      } else {
+      }
+      else {
         if (item.active) {
-          if (this.mandatory) return
+          if (this.mandatory)
+            return
           this.innerValue = undefined
-        } else {
+        }
+        else {
           this.innerValue = item.itemValue
         }
       }
@@ -106,10 +104,15 @@ export default {
       return this.items.length - 1
     },
     unregister(item) {
-      if (this.items.includes(item)) {
+      if (this.items.includes(item))
         this.items.splice(this.items.indexOf(item), 1)
-      }
     },
   },
 }
 </script>
+
+<template>
+  <Component :is="tag">
+    <slot />
+  </Component>
+</template>

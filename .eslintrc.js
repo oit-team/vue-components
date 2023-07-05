@@ -1,18 +1,11 @@
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    es2021: true,
-  },
   extends: [
-    '@oit',
+    '@uxuip',
   ],
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+  rules: {
+    'vue/custom-event-name-casing': 'off',
+    'vue/no-deprecated-events-api': 'off',
+    'vue/require-explicit-emits': 'off',
+    'vue/no-deprecated-destroyed-lifecycle': 'off',
   },
-  plugins: [
-    'vue',
-  ],
-  rules: {},
 }

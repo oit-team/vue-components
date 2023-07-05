@@ -86,9 +86,9 @@ export default {
       this.status = LOAD_STATUS.FAIL
     },
     onClick(e) {
-      if ([LOAD_STATUS.FAIL, LOAD_STATUS.INACTIVE].includes(this.status)) {
+      if ([LOAD_STATUS.FAIL, LOAD_STATUS.INACTIVE].includes(this.status))
         this.load()
-      }
+
       this.$emit('click', e)
     },
     reset() {
@@ -100,9 +100,8 @@ export default {
         const canTrigger = !this.firstLoad ? this.active : true
 
         if (entries[0].isIntersecting && canTrigger) {
-          if (this.status === LOAD_STATUS.INACTIVE || this.status === LOAD_STATUS.FAIL) {
+          if (this.status === LOAD_STATUS.INACTIVE || this.status === LOAD_STATUS.FAIL)
             this.load()
-          }
         }
       }, {
         root: this.scroller,
@@ -130,12 +129,12 @@ export default {
       <div
         ref="trigger"
         class="vc-load-more__trigger-core"
-        :style="{ height: offset + 'px' }"
-      ></div>
+        :style="{ height: `${offset}px` }"
+      />
     </div>
     <div class="vc-load-more__tips">
       <div :class="statusClass" class="vc-load-more__status" @click="onClick">
-        <slot v-bind="scope"></slot>
+        <slot v-bind="scope" />
       </div>
     </div>
   </div>
